@@ -11,7 +11,8 @@ void heatlossCalc()
         {
             g_face[i].q = g_face[i].kAdj * g_face[i].area * (tn - g_wx.tw);
             g_qEnv += g_face[i].q;
-            printf("q%d = %.2lf\n", i, g_face[i].q);
+            //printf("q%d = %.2lf\n", i, g_face[i].q);//debug line
+            printf("%-8s q = %.2lf\n", g_face[i].name, g_face[i].q);
         }
         //printf("%-8s %c   %.2f   %.2f   %.2f   %.2f\n", g_face[i].name, g_face[i].orient, g_face[i].area, g_face[i].k, g_face[i].kAdj, g_face[i].kAdj);
 

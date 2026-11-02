@@ -22,18 +22,20 @@ int main()
 
 void givenDebugVal()
 {
+    int i = 0;
     do
     {
         //g_face[0].name = "北外墙";
-        g_face[0].orient = 'N';
-        g_face[0].area = 10.0;
-        g_face[0].k = 0.45;
-        g_face[0].valid = 1;//test,it factly need to be identified by code
-    } while (0);
+        strcpy(g_face[i].name, "北外墙");
+        g_face[i].orient = 'N';
+        g_face[i].area = 10.0;
+        g_face[i].k = 0.45;
+        g_face[i].valid = 1;//test,it factly need to be set by code, after check the legality of vals
+        i++;
+    } while (i < 2);
     do
     {
         //g_face[0].name = "北外墙";
-        strcpy(g_face[0].name, "北外墙");
         g_wx.tw = -19;
         g_wx.alphaN = 1.10;
         g_wx.alphaS = 1.10;
