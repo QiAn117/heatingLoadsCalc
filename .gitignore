@@ -1,0 +1,21 @@
+# 编译产物
+*.o
+*.obj
+*.exe
+*.out
+*.a
+*.dll
+
+# 构建目录
+build/
+Debug/
+Release/
+
+# IDE / 编辑器
+.vscode/
+.idea/
+*.user
+*.suo
+
+# 程序生成的报表（运行时产出，不入库）
+heat_load_report.txt

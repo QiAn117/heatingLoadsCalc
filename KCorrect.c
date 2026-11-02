@@ -1,12 +1,12 @@
 #include "KCorrect.h"
 void kCorrect()
 {
-
+    printf("M3 start to run\n");//debug line
     for(int i = 0; i < MAX_FACE; i++)
     {
         if(g_face[i].valid == 1)
         {
-            double adj = 0.0;
+            double adj = 1.0;
             switch (g_face[i].orient)
             {
             case 'N':
@@ -17,7 +17,6 @@ void kCorrect()
                 break;
             case 'R':
             case 'U':
-                adj = 1.00;
                 break;      
             case 'W':
             case 'E':
@@ -27,6 +26,7 @@ void kCorrect()
                 break;
             }
             g_face[i].kAdj = g_face[i].k * adj;
+            printf("%-8s kAdj = %.2lf\n", g_face[i].name, g_face[i].kAdj);
         }
     }
 }
