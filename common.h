@@ -2,6 +2,8 @@
 #define COMMON_H
 
 #define MAX_FACE 20      /* 最大围护面数 */
+#define RHO 1.29
+#define C_AIR 1.0
 
 /* 单个围护面 */
 struct Envelope {
@@ -24,4 +26,13 @@ struct Weather {
     double gapN, gapS;   /* 北/南窗缝隙总长 m，0~20 */
     double qsup;         /* 散热器供热能力 W，取值 1000~6000 */
 };
+
+extern struct Envelope g_face[MAX_FACE];
+extern struct Weather  g_wx;
+extern double tn;
+extern double g_qLeak;
+extern int    g_faceCnt;        /* 围护面数 */
+extern double g_tn;             /* 设定/平衡室温 C，迭代求出 */
+extern double g_qEnv, g_qLeak, g_qTotal; /* 围护热损失/渗透热损失/总负荷 W */
+
 #endif
