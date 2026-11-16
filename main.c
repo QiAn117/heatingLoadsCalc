@@ -8,6 +8,8 @@
 #include "Infiltration.h"
 #include "Equilibrium.h"
 #include "SumLoad.h"
+#include "Sensitivity.h"
+#include "Report.h"
 
 /* 全局数据定义 */
 struct Envelope g_face[MAX_FACE];
@@ -36,8 +38,8 @@ int main(void)
         printf(" 4. 围护与渗透热损失计算 (M4+M5)\n");
         printf(" 5. 热平衡温度迭代 (M6)\n");
         printf(" 6. 采暖负荷汇总与指标 (M7)\n");
-        printf(" 7. 室温敏感性实验 (M8)  [暂未接入]\n");
-        printf(" 8. 负荷报表输出 (M9)    [暂未接入]\n");
+        printf(" 7. 室温敏感性实验 (M8)\n");
+        printf(" 8. 负荷报表输出 (M9)\n");
         printf(" 0. 退出\n");
         printf("请选择：");
 
@@ -87,8 +89,16 @@ int main(void)
                 sumLoad();
             break;
         case 7:
+            if (!kFixed)
+                printf("[提示] 请先执行 1、2、3 完成读入与系数修正。\n");
+            else
+                sensitivity();
+            break;
         case 8:
-            printf("[提示] 该模块由组员负责实现，暂未接入。\n");
+            if (!kFixed)
+                printf("[提示] 请先执行 1、2、3 完成读入与系数修正。\n");
+            else
+                writeReport();
             break;
         case 0:
             printf("程序退出。\n");

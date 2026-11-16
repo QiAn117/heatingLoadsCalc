@@ -1,11 +1,10 @@
 #include "HeatLoss.h"
 #include <stdio.h>
 
-/* M4 围护热损失逐面累加模块
- * 对每个有效围护面按 q = kAdj·area·(tn-tw) 计算热损失并累加得 g_qEnv，
- * 打印逐面热损失表与占比。
+/* 纯计算：给定 tn，对每个有效围护面按 q = kAdj·area·(tn-tw) 计算热损失，
+ * 累加得 g_qEnv 并回填 g_face[].q，返回 g_qEnv。不打印，供 M4/M7/M8/M9 复用。
  */
-void heatlossCalc()
+double heatLossFace(double tn)
 {
     g_qEnv = 0.0;
     for (int i = 0; i < MAX_FACE; i++) {
@@ -14,6 +13,13 @@ void heatlossCalc()
             g_qEnv += g_face[i].q;
         }
     }
+    return g_qEnv;
+}
+
+/* M4 围护热损失逐面累加模块：计算并打印逐面热损失表与占比 */
+void heatlossCalc(void)
+{
+    heatLossFace(tn);
 
     printf("名称    朝向  面积m2   K修正   热损失W   占比\n");
     for (int i = 0; i < MAX_FACE; i++) {
