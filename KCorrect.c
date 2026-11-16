@@ -2,7 +2,6 @@
 //M3
 void kCorrect()
 {
-    printf("M3 start to run\n");//debug line
     for(int i = 0; i < MAX_FACE; i++)
     {
         if(g_face[i].valid == 1)
