@@ -1,4 +1,5 @@
 #include "Equilibrium.h"
+//M6
 void equilibrium()
 {
     double tnkp1 = 0;
