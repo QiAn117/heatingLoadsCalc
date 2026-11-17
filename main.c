@@ -23,7 +23,7 @@ int main(void)
 {
     system("chcp 65001 > NUL");   /* 控制台切到 UTF-8，保证中文正常显示 */
 
-    int choice = -1;
+    int choice = -1;//状态机
     int dataLoaded = 0;   /* M1 完成 */
     int wxLoaded = 0;     /* M2 完成 */
     int kFixed = 0;       /* M3 完成 */
