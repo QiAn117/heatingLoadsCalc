@@ -44,7 +44,7 @@ int main(void)
         printf("请选择：");
 
         if (scanf("%d", &choice) != 1) {
-            while (getchar() != '\n');   /* 清空错误输入 */
+            while (getchar() != '\n'); 
             choice = -1;
         }
 
