@@ -12,6 +12,7 @@ Debug/
 Release/
 tests/
 output/
+模版/
 
 # IDE / 编辑器
 .vscode/

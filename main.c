@@ -21,7 +21,7 @@
  * 状态约束：M3 前必须完成 M1、M2；M4~M9 依赖 M3 的修正结果。
  */
 
-/* 全局数据定义（声明见 common.h） */
+/* 全局数据定义 */
 struct Envelope g_face[MAX_FACE];
 struct Weather  g_wx = { -19.0, 1.10, 1.00, 0.85, 0.90, 7.2, 7.2, 2600.0 };
 int    g_faceCnt  = 0;
@@ -36,14 +36,12 @@ double g_qTotal   = 0.0;
 #define MENU_EOF     (-2)    /* 标准输入结束 */
 #define MENU_INVALID (-1)    /* 非法输入 */
 
-/* 读取一行输入：成功返回 1，遇到 EOF 返回 0。
- * 用 fgets 而不是 scanf("%d")：scanf 解析失败会把坏字符留在缓冲区里，
- * 导致后续菜单连环出错（原实现正是这样）。 */
 static int readLine(char *buf, int size)
 {
     if (fgets(buf, size, stdin) == NULL) return 0;
 
-    if (strchr(buf, '\n') == NULL && !feof(stdin)) {   /* 超长行：丢弃剩余字符 */
+    if (strchr(buf, '\n') == NULL && !feof(stdin)) 
+    {   /* 超长行：丢弃剩余字符 */
         int ch;
         while ((ch = getchar()) != '\n' && ch != EOF) { }
     }
@@ -51,7 +49,7 @@ static int readLine(char *buf, int size)
     return 1;
 }
 
-/* 读取菜单选项：空行/非数字/小数都返回 MENU_INVALID */
+/* 读取菜单选项：空行/非数字/小数返回 MENU_INVALID */
 static int readChoice(void)
 {
     char   buf[64];
